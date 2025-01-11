@@ -1,0 +1,65 @@
+# Dataset
+DATAROOT:                      # dataset root
+TRAIN_DATA: train_list.txt     # training data list
+TEST_DATA: test_list.txt       # testing data list
+IMAGE_SIZE:                    # image size of 3D image
+DATA_NORM: True                # normalize image to [-1, 1]
+NUM_WORKERS: 4                 # how many subprocesses to use for data loading
+
+
+# Network Parameters
+INIT_TYPE: xavier              # initialization [normal | kaiming | xavier | orthogonal]
+INIT_GAIN: 0.02                # initialization gain
+
+GEN_FEAT_NUM: 16               # basic channel number of generator features
+CHANNEL_MULTIPLIERS: [1,2,4,4] # multiplicative factors for channel numbers in the intermediate blocks
+NUM_RES_BLOCK: 1               # number of residual block in each generator layer
+DIS_FEAT_NUM: 16               # basic channel number of discriminator features
+CLASS_NUM: 2                   # number of classes
+SPECTRAL_NORM: True            # use spectral normalization
+
+
+# Optimization
+LR_G: 2.5e-4                   # learning rate of generator
+LR_D: 2.5e-4                   # learning rate of discriminator
+BETA1: 0.0                     # adam optimizer beta1
+BETA2: 0.999                   # adam optimizer beta2
+
+
+# Loss Configuration
+GAN_MODE: hinge                # mode of gan loss [vanilla | lsgan | wgan | hinge]
+GAN_WEIGHT: 1                  # weight of gan loss
+CYCLE_WEIGHT: 10               # weight of cycle-consistency loss
+RECON_WEIGHT: 5                # weight of reconstruction loss
+
+
+# Save Paths
+LOG_PATH:    ./checkpoints/logs/synthesis       # training log path
+CKPT_PATH:   ./checkpoints/models/synthesis     # model weights path
+SAMPLE_PATH: ./checkpoints/samples              # training samples path
+
+
+# Training Settings
+BATCH_SIZE: 6                  # batch size
+TOTAL_ITERS: 20000             # number of training iterations
+GAN_START_ITER: 1              # which iteration to start using GAN
+
+LOG_INTERVAL: 2000             # how many iterations to wait before logging training status
+SAVE_START: 2000               # which iteration to start saving models
+SAVE_INTERVAL: 2000            # how many iterations to wait before saving models
+VIS_NUM: 8                     # how many generated cases for visualization
+VIS_SLICE: 27                  # visualize which z-axis slice of the generated volume
+
+PRETRAIN_GEN:                  # which pretrained generator to load
+PRETRAIN_DIS:                  # which discriminator to load
+
+
+# Testing Settings
+MODEL_GEN: 20000                     # which generator to test
+TEST_PATH: ./test_results/synthesis  # testng generated image path
+SAVE_RESULTS: True                   # whether to save image results
+
+
+# Device
+MANUAL_SEED: 42                # manual random seed for reproducibility
+GPU: [0]                       # gpu ids

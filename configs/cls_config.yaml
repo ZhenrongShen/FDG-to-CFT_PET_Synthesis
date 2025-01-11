@@ -1,0 +1,59 @@
+# Dataset
+DATAROOT:                      # dataset root
+TRAIN_DATA: train_list.txt     # training data list
+TEST_DATA: test_list.txt       # testing data list
+IMAGE_SIZE:                    # image size of 3D image
+DATA_NORM: True                # normalize image to [-1, 1]
+NUM_WORKERS: 4                 # how many subprocesses to use for data loading
+
+
+# Network Parameters
+INIT_TYPE: kaiming             # initialization [normal | kaiming | xavier | orthogonal]
+INIT_GAIN: 0.02                # initialization gain
+
+GEN_FEAT_NUM: 16               # basic channel number of generator features
+CHANNEL_MULTIPLIERS: [1,2,4,4] # multiplicative factors for channel numbers in the intermediate blocks
+NUM_RES_BLOCK: 1               # number of residual block in each generator layer
+GEN_PATH: ./checkpoints/models/classification/gen_to_CFT_XXXX.pth  # model weight path of generator
+
+INPUT_TYPE: syn_CFT            # input image type [real_FDG | syn_CFT], only for 1-channel input
+IN_CHANNELS: 2                 # input channel of classifier
+CLASS_NUM: 2                   # number of classes
+CLS_FEAT_NUM: 16               # basic channel number of classifier features
+MLP_FEAT_NUM: 1024             # hidden dimension of FC layers in classifier
+CLS_MAP_FEAT_NUM: 512          # feature channel of class-conditional map
+CLS_NORM_TYPE: instance        # normalization type of SPADE [batch | instance]
+
+
+# Optimization
+OPTIMIZER:
+  lr_c: 0.001                  # learning rate of classifier
+  t_initial: 20                # number of epochs until the first restart
+  lr_min: 0.00005              # minimum learning rate
+  beta1: 0.9                   # adam optimizer beta1
+  beta2: 0.999                 # adam optimizer beta2
+
+
+# Save Paths
+LOG_PATH:    ./checkpoints/logs/classification       # training log path
+CKPT_PATH:   ./checkpoints/models/classification     # model weights path
+
+
+# Training Settings
+BATCH_SIZE: 24                 # batch size
+TOTAL_EPOCH: 100               # number of training epochs
+LOG_INTERVAL: 1                # how many epochs to wait before logging training status
+SAVE_START: 1                  # which epoch to start saving models
+SAVE_INTERVAL: 5               # how many epochs to wait before saving models
+PRETRAIN_CLS:                  # which classifier to load
+
+
+# Testing Settings
+MODEL_CLS: 100                             # which classifier to test
+TEST_PATH: ./test_results/classification   # testng generated image path (72,6)
+SCORE_THRESH: 0.5                          # threshold of confidence score
+
+
+# Device
+MANUAL_SEED: 42                # manual random seed for reproducibility
+GPU: [0]                       # gpu ids
