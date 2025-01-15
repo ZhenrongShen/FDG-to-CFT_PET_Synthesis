@@ -1,10 +1,10 @@
 # FDG-to-CFT-PET-Synthesis
-Official Pytorch Implementation for "Cross-modality PET Image Synthesis for Parkinson's Disease Diagnosis: A Leap from [18F]FDG to [11C]CFT". 
+Official Pytorch Implementation for "Cross-modality PET Image Synthesis for Parkinson's Disease Diagnosis: A Leap from \[<sup>18</sup>F\]FDG to \[<sup>11</sup>C\]CFT" (Accepted by _European Journal of Nuclear Medicine and Molecular Imaging_). 
 
 ### Method
 ![Overview of Method](/figures/overview.png "Overview of Method")
 
-The proposed framework synthesizes [11C]CFT PET images from real [18F]FDG PET images and leverages their cross-modal correlation to distinguish Parkinson's Disease (PD) from Normal Control (NC).
+We propose a two-stage framework that synthesizes \[<sup>11</sup>C\]CFT PET images from real \[<sup>18</sup>F\]FDG PET scans for subsequent automatic Parkinson's Disease (PD) diagnosis, which was based on the correlation between dopaminergic deficiency in the striatum and increased glucose metabolism in PD patients.
 
 
 ### Qualitative Results
@@ -47,7 +47,7 @@ DATAROOT
 └─ unpaired_NC_CFT_data_list
 ```
 
-- The TXT files `train_list.txt` and `test_list.txt` should contain one image path (if unpaired, only read [18F]FDG PET image) per line as in the following example:
+- The TXT files `train_list.txt` and `test_list.txt` should contain one image path (if unpaired, only read \[<sup>18</sup>F\]FDG PET image) per line as in the following example:
 
 ```
 PD_paired_FDG+CFT/{patient_ID}
@@ -56,27 +56,27 @@ NC_unpaired_FDG+CFT/FDG/{patient_ID}_FDG.nii
 ......
 ```
 
-- The TXT files `unpaired_NC_CFT_data_list.txt` should contain one [11C]CFT PET image path per line as in the following example:
+- The TXT files `unpaired_NC_CFT_data_list.txt` should contain one \[<sup>11</sup>C\]CFT PET image path per line as in the following example:
 
 ```
 NC_unpaired_FDG+CFT/CFT/{patient_ID}_CFT.nii
 ......
 ```
 
-- After finishing data preparation, use the following command to train [11C]CFT Generator:
+- After finishing data preparation, use the following command to train \[<sup>11</sup>C\]CFT Generator:
 
 ```
 python train.py --config=syn_config
 ```
 
-- After finishing the training of [11C]CFT Generator, set the argument `GEN_PATH` in `configs/cls_config.yaml` to the desired generator weight and use the following command to train PD Classifier:
+- After finishing the training of \[<sup>11</sup>C\]CFT Generator, set the argument `GEN_PATH` in `configs/cls_config.yaml` to the desired generator weight and use the following command to train PD Classifier:
 
 ```
 python train.py --config=cls_config
 ```
 
 ### Testing
-- Edit the testing arguments in `configs/syn_config.yaml` and use the following command to test [11C]CFT Generator:
+- Edit the testing arguments in `configs/syn_config.yaml` and use the following command to test \[<sup>11</sup>C\]CFT Generator:
 
 ```
 python test.py --config=syn_config
