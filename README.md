@@ -1,10 +1,10 @@
 # FDG-to-CFT-PET-Synthesis
-Official Pytorch Implementation for "Cross-modality PET Image Synthesis for Parkinson's Disease Diagnosis: A Leap from \[<sup>18</sup>F\]FDG to \[<sup>11</sup>C\]CFT" (Accepted by _European Journal of Nuclear Medicine and Molecular Imaging_). 
+Official Pytorch Implementation of [Cross-modality PET Image Synthesis for Parkinson's Disease Diagnosis: A Leap from \[<sup>18</sup>F\]FDG to \[<sup>11</sup>C\]CFT](https://link.springer.com/article/10.1007/s00259-025-07096-3) (Accepted by _European Journal of Nuclear Medicine and Molecular Imaging_). 
 
 ### Method
 ![Overview of Method](/figures/overview.png "Overview of Method")
 
-We propose a two-stage framework that synthesizes \[<sup>11</sup>C\]CFT PET images from real \[<sup>18</sup>F\]FDG PET scans for subsequent automatic Parkinson's Disease (PD) diagnosis, which was based on the correlation between dopaminergic deficiency in the striatum and increased glucose metabolism in PD patients.
+We propose a two-stage framework that synthesizes \[<sup>11</sup>C\]CFT PET images from real \[<sup>18</sup>F\]FDG PET scans for subsequent automatic Parkinson's Disease (PD) diagnosis, which was based on the correlation between dopaminergic deficiency in the striatum and increased glucose metabolism in PD patients. Please refer to [the paper](https://link.springer.com/article/10.1007/s00259-025-07096-3) for more details.
 
 
 ### Qualitative Results
@@ -86,4 +86,18 @@ python test.py --config=syn_config
 
 ```
 python test.py --config=cls_config
+```
+
+## :books: Citation
+
+If you find this repository helpful, please consider citing:
+```
+@article{shen2025cross,
+  title={Cross-modality PET image synthesis for Parkinson’s Disease diagnosis: a leap from [18F] FDG to [11C] CFT},
+  author={Shen, Zhenrong and Wang, Jing and Huang, Haolin and Lu, Jiaying and Ge, Jingjie and Xiong, Honglin and Wu, Ping and Ju, Zizhao and Lin, Huamei and Zhu, Yuhua and others},
+  journal={European Journal of Nuclear Medicine and Molecular Imaging},
+  pages={1--10},
+  year={2025},
+  publisher={Springer}
+}
 ```
